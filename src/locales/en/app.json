@@ -1,5 +1,7 @@
 {
   "welcome": "Welcome to My Blog App",
   "description": "A place to share interesting stories and useful knowledge",
-  "title": "My Blog"
+  "title": "My Blog",
+  "addPost": "Add Post",
+  "storageError": "Error saving posts to local storage."
 }

@@ -1,5 +1,7 @@
 {
   "welcome": "Chào mừng đến với Ứng dụng Blog của tôi",
   "description": "Nơi chia sẻ những câu chuyện thú vị và kiến thức bổ ích",
-  "title": "Blog của tôi"
+  "title": "Blog của tôi",
+  "addPost": "Thêm bài viết",
+  "storageError": "Lỗi khi lưu bài viết vào bộ nhớ cục bộ."
 }

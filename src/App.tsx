@@ -1,11 +1,49 @@
 import { useTranslation } from 'react-i18next';
 import Header from './components/header';
 import PostCard from './components/postcard';
-import { initialPosts } from './data/initialPosts';
-import { useState } from 'react';
+import { initialPosts, type PostCardProps } from './data/initialPosts';
+import { useEffect, useState } from 'react';
 function App() {
   const { t } = useTranslation('app');
-  const [posts, setPosts] = useState(initialPosts);
+  const [posts, setPosts] = useState<PostCardProps[]>([]);
+  useEffect(() => {
+    const storedPosts = localStorage.getItem('posts');
+    if (storedPosts) {
+      try {
+        const parsed = JSON.parse(storedPosts) as PostCardProps[];
+        const restored = parsed.map((p) => ({ ...p, date: new Date(p.date) }));
+        setPosts(restored);
+      } catch (error) {
+        console.error('Lỗi parse posts:', error);
+        setPosts(initialPosts);
+      }
+    } else {
+      setPosts(initialPosts);
+    }
+  }, []);
+  useEffect(() => {
+    if (posts.length === 0) return;
+
+    try {
+      localStorage.setItem('posts', JSON.stringify(posts));
+    } catch (error) {
+      console.error('Lỗi lưu posts:', error);
+      alert(t('storageError'));
+    }
+  }, [posts]);
+
+  const addPost = () => {
+    const newPost: PostCardProps = {
+      id: String(Date.now()),
+      title: 'Bài viết mới',
+      author: 'Tác giả mới',
+      date: new Date(),
+      excerpt: 'Đây là nội dung tóm tắt của bài viết mới...',
+    };
+    const updatedPosts = [...posts, newPost];
+    setPosts(updatedPosts);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Header title={t('title')} />
@@ -15,6 +53,15 @@ function App() {
             {t('welcome')}
           </h2>
           <p className="mt-4 text-xl text-gray-600">{t('description')}</p>
+        </div>
+
+        <div className="flex justify-end mb-6">
+          <button
+            onClick={addPost}
+            className="px-4 py-2 bg-blue-600 text-white rounded shadow hover:bg-blue-700 transition"
+          >
+            {t('addPost')}
+          </button>
         </div>
 
         <article className="mt-12 grid gap-6 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1">
