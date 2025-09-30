@@ -1,0 +1,13 @@
+{
+  "notFound": {
+    "title": "Bài viết không tìm thấy",
+    "message": "Bài viết bạn đang tìm kiếm không tồn tại."
+  },
+  "notTitle": "Bài viết không tiêu đề",
+  "unknownAuthor": "Tác giả không xác định",
+  "noDate": "Không có ngày nào",
+  "noContent": "Không có nội dung",
+  "noExcerpt": "Không có đoạn trích",
+  "errorTitle": "Lỗi",
+  "errorDescription": "Đã xảy ra lỗi không mong muốn. Vui lòng thử lại sau."
+}

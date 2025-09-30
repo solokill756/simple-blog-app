@@ -1,0 +1,8 @@
+{
+  "welcome": "Welcome to My Blog App",
+  "description": "A place to share interesting stories and useful knowledge",
+  "addPost": "Add Post",
+  "storageError": "Error saving posts to local storage.",
+  "errorTitle": "Error",
+  "errorDescription": "An unexpected error occurred. Please try again later."
+}
