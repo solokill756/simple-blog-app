@@ -2,8 +2,10 @@ import { useTranslation } from 'react-i18next';
 import Header from './components/header';
 import PostCard from './components/postcard';
 import { initialPosts } from './data/initialPosts';
+import { useState } from 'react';
 function App() {
   const { t } = useTranslation('app');
+  const [posts, setPosts] = useState(initialPosts);
   return (
     <div className="min-h-screen bg-gray-50">
       <Header title={t('title')} />
@@ -16,7 +18,7 @@ function App() {
         </div>
 
         <article className="mt-12 grid gap-6 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1">
-          {initialPosts.map((post) => {
+          {posts.map((post) => {
             return <PostCard key={post.id} {...post} />;
           })}
         </article>
