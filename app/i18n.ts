@@ -4,6 +4,7 @@ import postDetailVi from './locales/vi/post_detail.json';
 import postcardVi from './locales/vi/postcard.json';
 import headerVi from './locales/vi/header.json';
 import homeVi from './locales/vi/home.json';
+import postFormVi from './locales/vi/post_form.json';
 
 import postcardEn from './locales/en/postcard.json';
 import headerEn from './locales/en/header.json';
@@ -11,6 +12,7 @@ import aboutEn from './locales/en/about.json';
 import layoutEn from './locales/en/layout.json';
 import postDetailEn from './locales/en/post_detail.json';
 import homeEn from './locales/en/home.json';
+import postFormEn from './locales/en/post_form.json';
 
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
@@ -24,6 +26,7 @@ i18n.use(initReactI18next).init({
       postDetail: postDetailVi,
       about: aboutVi,
       home: homeVi,
+      postForm: postFormVi,
     },
     en: {
       postcard: postcardEn,
@@ -32,6 +35,7 @@ i18n.use(initReactI18next).init({
       postDetail: postDetailEn,
       about: aboutEn,
       home: homeEn,
+      postForm: postFormEn,
     },
   },
   lng: 'vi',

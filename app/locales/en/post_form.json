@@ -1,0 +1,11 @@
+{
+  "addNewPost": "Add New Post",
+  "title": "Title",
+  "author": "Author",
+  "excerpt": "Excerpt",
+  "content": "Content",
+  "addPost": "Add Post",
+  "error": "An error occurred while adding the post!",
+  "formDescription": "Share your stories and knowledge with others",
+  "cancel": "Cancel"
+}
