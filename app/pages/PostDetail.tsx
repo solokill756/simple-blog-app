@@ -3,8 +3,8 @@ import { initialPosts, type PostCardProps } from '../data/initialPosts';
 import { useTranslation } from 'react-i18next';
 
 const PostDetail: React.FC<{ id: string }> = ({ id }) => {
+  const { t } = useTranslation('postDetail');
   const [post, setPost] = React.useState<PostCardProps | null>(null);
-  const { t } = useTranslation('post_detail');
   useEffect(() => {
     try {
       const storedPosts = localStorage.getItem('posts');
@@ -14,7 +14,7 @@ const PostDetail: React.FC<{ id: string }> = ({ id }) => {
         posts = initialPosts;
       } else {
         const parsed = JSON.parse(storedPosts) as PostCardProps[];
-        posts = parsed.map((p) => ({ ...p, date: new Date(p.date) }));
+        posts = parsed.map((p) => ({ ...p, date: new Date() }));
       }
       const foundPost = posts.find((p) => p.id === id);
       setPost(foundPost || null);
