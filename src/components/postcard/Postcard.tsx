@@ -1,7 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import type { PostCardProps } from '../data/initialPosts';
+import type { PostCardProps } from '../../data/initialPosts';
+import { Link } from 'react-router';
 
 const PostCard: React.FC<PostCardProps> = ({
+  id,
   title,
   author,
   date,
@@ -34,12 +36,12 @@ const PostCard: React.FC<PostCardProps> = ({
               </span>
             </span>
           </div>
-          <a
-            href="#"
+          <Link
+            to={`/postcard/${id}`}
             className="text-blue-600 hover:text-blue-800 font-medium text-sm"
           >
             {t('readMore')}
-          </a>
+          </Link>
         </div>
       </div>
     </div>

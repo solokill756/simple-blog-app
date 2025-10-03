@@ -1,0 +1,13 @@
+{
+  "notFound": {
+    "title": "Post Not Found",
+    "message": "The post you are looking for does not exist."
+  },
+  "notTitle": "Untitled Post",
+  "unknownAuthor": "Unknown Author",
+  "noDate": "No Date Available",
+  "noContent": "No content available for this post.",
+  "noExcerpt": "No excerpt available.",
+  "errorTitle": "Error",
+  "errorDescription": "An unexpected error occurred. Please try again later."
+}

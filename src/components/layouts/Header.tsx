@@ -1,6 +1,7 @@
 import React from 'react';
-import HeaderNav from './header_nav';
+
 import { useTranslation } from 'react-i18next';
+import HeaderNav from '../common/HeaderNav';
 
 interface HeaderProps {
   title: string;
