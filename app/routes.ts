@@ -4,5 +4,6 @@ export default [
   index('routes/_index.tsx'),
   route('about', 'routes/about.tsx'),
   route('create-post', 'routes/create-post.tsx'),
+  route('edit-post/:id', 'routes/postcard/edit.tsx'),
   route('postcard/:id', 'routes/postcard/$id.tsx'),
 ] satisfies RouteConfig;

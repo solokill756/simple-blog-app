@@ -2,17 +2,30 @@ import { useState, useEffect } from 'react';
 
 export function useLocalStorage<T>(key: string, defaultValue: T) {
   const [value, setValue] = useState<T>(defaultValue);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const storedValue = localStorage.getItem(key);
-      if (storedValue) {
-        try {
-          setValue(JSON.parse(storedValue));
-        } catch {
-          setValue(defaultValue);
+      const loadData = async () => {
+        setLoading(true);
+
+        await new Promise((resolve) => setTimeout(resolve, 300));
+
+        const storedValue = localStorage.getItem(key);
+        if (storedValue) {
+          try {
+            setValue(JSON.parse(storedValue));
+          } catch {
+            setValue(defaultValue);
+          }
         }
-      }
+
+        setLoading(false);
+      };
+
+      loadData();
+    } else {
+      setLoading(false);
     }
   }, [key, defaultValue]);
 
@@ -23,5 +36,5 @@ export function useLocalStorage<T>(key: string, defaultValue: T) {
     }
   };
 
-  return [value, setStoredValue] as const;
+  return [value, setStoredValue, loading] as const;
 }

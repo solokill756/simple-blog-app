@@ -7,5 +7,15 @@
   "addPost": "Thêm bài viết",
   "error": "Có lỗi xảy ra khi thêm bài viết!",
   "formDescription": "Chia sẻ câu chuyện và kiến thức của bạn với mọi người",
-  "cancel": "Hủy bỏ"
+  "cancel": "Hủy bỏ",
+  "editPost": "Chỉnh sửa bài viết",
+  "updatePost": "Cập nhật bài viết",
+  "postAdded": "Đã thêm bài viết thành công!",
+  "postAddFailed": "Thêm bài viết thất bại. Vui lòng thử lại.",
+  "postUpdated": "Đã cập nhật bài viết thành công!",
+  "postUpdateFailed": "Cập nhật bài viết thất bại. Vui lòng thử lại.",
+  "loadingForm": "Đang tải form...",
+  "loadingPost": "Đang tải bài viết...",
+  "creatingPost": "Đang tạo bài viết...",
+  "updatingPost": "Đang cập nhật bài viết..."
 }

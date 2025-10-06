@@ -19,6 +19,11 @@ type Pages = {
   "/create-post": {
     params: {};
   };
+  "/edit-post/:id": {
+    params: {
+      "id": string;
+    };
+  };
   "/postcard/:id": {
     params: {
       "id": string;
@@ -29,7 +34,7 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/about" | "/create-post" | "/postcard/:id";
+    page: "/" | "/about" | "/create-post" | "/edit-post/:id" | "/postcard/:id";
   };
   "routes/_index.tsx": {
     id: "routes/_index";
@@ -42,6 +47,10 @@ type RouteFiles = {
   "routes/create-post.tsx": {
     id: "routes/create-post";
     page: "/create-post";
+  };
+  "routes/postcard/edit.tsx": {
+    id: "routes/postcard/edit";
+    page: "/edit-post/:id";
   };
   "routes/postcard/$id.tsx": {
     id: "routes/postcard/$id";

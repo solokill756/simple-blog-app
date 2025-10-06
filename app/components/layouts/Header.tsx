@@ -8,7 +8,7 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ title }) => {
-  const { t } = useTranslation('header');
+  const { t } = useTranslation('common');
   const displayTitle =
     typeof title === 'string' && title.trim().length > 0 ? title : t('title');
 

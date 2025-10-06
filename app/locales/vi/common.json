@@ -1,0 +1,22 @@
+{
+  "postCreated": "Đã tạo bài viết thành công!",
+  "errorOccurred": "Đã xảy ra lỗi. Vui lòng thử lại.",
+  "postDeleted": "Đã xóa bài viết thành công!",
+  "postUpdated": "Đã cập nhật bài viết thành công!",
+  "postDeletedError": "Không thể xóa bài viết. Vui lòng thử lại.",
+  "home.link": "Trang chủ",
+  "about.link": "Giới thiệu",
+  "title": "Blog của tôi",
+  "language": {
+    "vietnamese": "Tiếng Việt",
+    "english": "English"
+  },
+  "theme": {
+    "light": "Chế độ sáng",
+    "dark": "Chế độ tối"
+  },
+  "error": {
+    "title": "Đã xảy ra lỗi!",
+    "backToPostcards": "Quay lại trang bài viết"
+  }
+}

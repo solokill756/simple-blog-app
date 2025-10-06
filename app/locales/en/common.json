@@ -1,0 +1,22 @@
+{
+  "postCreated": "Post created successfully!",
+  "errorOccurred": "An error occurred. Please try again.",
+  "postDeleted": "Post deleted successfully!",
+  "postUpdated": "Post updated successfully!",
+  "postDeletedError": "Failed to delete the post. Please try again.",
+  "home.link": "Home",
+  "about.link": "About",
+  "title": "My Blog",
+  "language": {
+    "vietnamese": "Tiếng Việt",
+    "english": "English"
+  },
+  "theme": {
+    "light": "Light Mode",
+    "dark": "Dark Mode"
+  },
+  "error": {
+    "title": "Something went wrong!",
+    "backToPostcards": "Back to postcards"
+  }
+}

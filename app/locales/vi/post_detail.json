@@ -9,5 +9,13 @@
   "noContent": "Không có nội dung",
   "noExcerpt": "Không có đoạn trích",
   "errorTitle": "Lỗi",
-  "errorDescription": "Đã xảy ra lỗi không mong muốn. Vui lòng thử lại sau."
+  "errorDescription": "Đã xảy ra lỗi không mong muốn. Vui lòng thử lại sau.",
+  "edit": "Sửa",
+  "delete": "Xóa",
+  "confirmDelete": "Bạn có chắc chắn muốn xóa bài viết này không?",
+  "cancel": "Hủy",
+  "postDeleted": "Đã xóa bài viết thành công!",
+  "postDeletedError": "Không thể xóa bài viết. Vui lòng thử lại.",
+  "loadingPost": "Đang tải bài viết...",
+  "deletingPost": "Đang xóa bài viết..."
 }
