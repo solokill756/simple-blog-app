@@ -1,35 +1,43 @@
 import { useTranslation } from 'react-i18next';
 import i18n from '../../i18n';
 import { Link } from 'react-router';
+import { useTheme } from '~/contexts/ThemeContext';
 
 const HeaderNav: React.FC = () => {
+  const { theme, toggleTheme } = useTheme();
   const { t } = useTranslation('common');
   return (
     <nav className="md:block">
       <div className="ml-10 flex items-center space-x-6">
         <Link
           to="/"
-          className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium"
+          className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-blue-400"
         >
           {t('home.link')}
         </Link>
         <Link
           to="/about"
-          className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium"
+          className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-blue-400"
         >
           {t('about.link')}
         </Link>
         <button
-          className="ml-4 px-3 py-2 text-sm font-medium rounded border border-gray-300 bg-gray-100 hover:bg-blue-100 text-gray-700"
+          className="ml-4 px-3 py-2 text-sm font-medium rounded border border-gray-300 bg-gray-100 hover:bg-blue-100 text-gray-700 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-blue-700"
           onClick={() => i18n.changeLanguage('vi')}
         >
           {t('language.vietnamese')}
         </button>
         <button
-          className="px-3 py-2 text-sm font-medium rounded border border-gray-300 bg-gray-100 hover:bg-blue-100 text-gray-700"
+          className="px-3 py-2 text-sm font-medium rounded border border-gray-300 bg-gray-100 hover:bg-blue-100 text-gray-700 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-blue-700"
           onClick={() => i18n.changeLanguage('en')}
         >
           {t('language.english')}
+        </button>
+        <button
+          className="px-3 py-2 text-sm font-medium rounded border border-gray-300 bg-gray-100 hover:bg-blue-100 text-gray-700 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-blue-700"
+          onClick={toggleTheme}
+        >
+          {theme === 'light' ? t('theme.dark') : t('theme.light')}
         </button>
       </div>
     </nav>

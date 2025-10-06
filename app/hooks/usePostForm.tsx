@@ -52,4 +52,4 @@ export const usePostForm = (initialPost?: PostCardProps | null) => {
     setExcerpt: (value: string) => updateField('excerpt', value),
     setContent: (value: string) => updateField('content', value),
   };
-};
+}; 

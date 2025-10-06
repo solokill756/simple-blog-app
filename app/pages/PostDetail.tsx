@@ -57,11 +57,11 @@ const PostDetail: React.FC<PostDetailProps> = ({
 
   return (
     <div className="max-w-3xl mx-auto py-12 px-4">
-      <h1 className="text-3xl font-bold text-gray-900 mb-2">
+      <h1 className="text-3xl font-bold text-gray-900 mb-2 dark:text-white">
         {postCard.title ?? t('noTitle')}
       </h1>
       <div className="flex items-center text-sm text-gray-500 mb-6">
-        <span className="font-medium text-gray-700">
+        <span className="font-medium text-gray-700 dark:text-gray-300">
           {postCard.author ?? t('unknownAuthor')}
         </span>
         <span className="mx-2">•</span>
@@ -71,7 +71,7 @@ const PostDetail: React.FC<PostDetailProps> = ({
       <div className="flex gap-4 mb-6">
         <button
           onClick={handleEdit}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition duration-200 flex items-center gap-2"
+          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition duration-200 flex items-center gap-2 dark:bg-blue-500 dark:hover:bg-blue-600"
         >
           <FiEdit className="w-4 h-4" />
           {t('edit')}
@@ -84,11 +84,11 @@ const PostDetail: React.FC<PostDetailProps> = ({
           {t('delete')}
         </button>
       </div>
-      <p className="text-gray-700 text-lg mb-6">
+      <p className="text-gray-700 text-lg mb-6 dark:text-gray-300">
         {postCard.excerpt ?? t('noExcerpt')}
       </p>
-      <div className="bg-white rounded-lg shadow p-6">
-        <div className="prose max-w-none text-gray-800">
+      <div className="bg-white rounded-lg shadow p-6 dark:bg-gray-800">
+        <div className="prose max-w-none text-gray-800 dark:text-gray-300">
           {postCard.content ?? t('noContent')}
         </div>
       </div>
