@@ -7,5 +7,15 @@
   "addPost": "Add Post",
   "error": "An error occurred while adding the post!",
   "formDescription": "Share your stories and knowledge with others",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "editPost": "Edit Post",
+  "updatePost": "Update Post",
+  "postAdded": "Post added successfully!",
+  "postAddFailed": "Failed to add post. Please try again.",
+  "postUpdated": "Post updated successfully!",
+  "postUpdateFailed": "Failed to update post. Please try again.",
+  "loadingForm": "Loading form...",
+  "loadingPost": "Loading post...",
+  "creatingPost": "Creating post...",
+  "updatingPost": "Updating post..."
 }

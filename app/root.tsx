@@ -5,13 +5,15 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLocation,
 } from 'react-router';
 
 import type { Route } from './+types/root';
 import './app.css';
-import './i18n'; // Import để khởi tạo i18n
+import './i18n';
 import Header from './components/layouts/Header';
 import { useTranslation } from 'react-i18next';
+import { Toaster } from 'react-hot-toast';
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -36,6 +38,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <Toaster position="top-right" />
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -45,7 +48,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  const { t } = useTranslation('header');
+  const { t } = useTranslation('common');
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Header title={t('title')} />

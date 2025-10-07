@@ -3,13 +3,18 @@ import { Link } from 'react-router';
 import { initialPosts, type PostCardProps } from '../data/initialPosts';
 import PostCard from '../components/postcard/Postcard';
 import { useLocalStorage } from '~/hooks/useLocalStorage';
+import Loading from '~/components/common/Loading';
 
 const Home: React.FC = () => {
   const { t } = useTranslation('home');
-  const [posts, setPosts] = useLocalStorage<PostCardProps[]>(
+  const [posts, setPosts, loading] = useLocalStorage<PostCardProps[]>(
     'posts',
     initialPosts
   );
+
+  if (loading) {
+    return <Loading size="lg" text={t('loading') || 'Loading posts...'} />;
+  }
 
   return (
     <div>

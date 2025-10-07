@@ -4,5 +4,6 @@
   "addPost": "Thêm bài viết",
   "storageError": "Lỗi khi lưu bài viết vào bộ nhớ cục bộ.",
   "errorTitle": "Lỗi",
-  "errorDescription": "Đã xảy ra lỗi không mong muốn. Vui lòng thử lại sau."
+  "errorDescription": "Đã xảy ra lỗi không mong muốn. Vui lòng thử lại sau.",
+  "loading": "Đang tải các bài viết..."
 }

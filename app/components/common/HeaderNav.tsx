@@ -3,7 +3,7 @@ import i18n from '../../i18n';
 import { Link } from 'react-router';
 
 const HeaderNav: React.FC = () => {
-  const { t } = useTranslation('header');
+  const { t } = useTranslation('common');
   return (
     <nav className="md:block">
       <div className="ml-10 flex items-center space-x-6">
