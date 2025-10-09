@@ -19,16 +19,18 @@ const Home: React.FC = () => {
   return (
     <div>
       <div className="text-center">
-        <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+        <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
           {t('welcome')}
         </h2>
-        <p className="mt-4 text-xl text-gray-600">{t('description')}</p>
+        <p className="mt-4 text-xl text-gray-600 dark:text-gray-300">
+          {t('description')}
+        </p>
       </div>
 
       <div className="flex justify-end mb-6">
         <Link
           to="/create-post"
-          className="px-4 py-2 bg-blue-600 text-white rounded shadow hover:bg-blue-700 transition"
+          className="px-4 py-2 bg-blue-600 dark:bg-blue-500 text-white rounded shadow hover:bg-blue-700 dark:hover:bg-blue-600 transition"
         >
           {t('addPost')}
         </Link>

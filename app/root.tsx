@@ -14,6 +14,7 @@ import './i18n';
 import Header from './components/layouts/Header';
 import { useTranslation } from 'react-i18next';
 import { Toaster } from 'react-hot-toast';
+import { ThemeProvider, useTheme } from './contexts/ThemeContext';
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -47,16 +48,27 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function App() {
+function AppContent() {
   const { t } = useTranslation('common');
+  const { theme } = useTheme();
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header title={t('title')} />
-      <main className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-        {<Outlet />}
-      </main>
+    <div className={theme === 'dark' ? 'dark' : ''}>
+      <div className="min-h-screen bg-white text-black dark:bg-gray-900 dark:text-white">
+        <Header title={t('title')} />
+        <main className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+          <Outlet />
+        </main>
+      </div>
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 

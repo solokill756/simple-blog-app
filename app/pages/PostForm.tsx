@@ -48,18 +48,20 @@ const PostForm: React.FC<PostFormProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-gray-50 py-12 dark:bg-gray-900">
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl dark:text-white">
             {postId ? t('editPost') : t('addNewPost')}
           </h2>
-          <p className="mt-4 text-lg text-gray-600">{t('formDescription')}</p>
+          <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
+            {t('formDescription')}
+          </p>
         </div>
 
         <form
           onSubmit={handleSubmit}
-          className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 space-y-6"
+          className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 space-y-6 dark:bg-gray-800"
         >
           <PostFormInput
             label={t('title')}
