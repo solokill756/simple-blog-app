@@ -1,51 +1,61 @@
+import { postService } from '~/services/postService';
 import PostForm from '../pages/PostForm';
-import { useLocalStorage } from '~/hooks/useLocalStorage';
-import { initialPosts, type PostCardProps } from '../data/initialPosts';
-import { useNavigate } from 'react-router';
-import toast from 'react-hot-toast';
+import { redirect, useNavigation } from 'react-router';
+import ClipLoader from 'react-spinners/ClipLoader';
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
-import Loading from '~/components/common/Loading';
 
-export default function CreatePostPage() {
-  const [posts, setPosts, postsLoading] = useLocalStorage<PostCardProps[]>(
-    'posts',
-    initialPosts
-  );
-  const [submitting, setSubmitting] = useState(false);
-  const navigate = useNavigate();
-  const { t } = useTranslation('postForm');
+export async function action({ request }: { request: Request }) {
+  const formData = await request.formData();
+  const title = formData.get('title') as string;
+  const body = formData.get('body') as string;
 
-  const handleAddPost = async (newPost: PostCardProps) => {
-    setSubmitting(true);
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      setPosts([newPost, ...posts]);
-      toast.success(t('postAdded'));
-      navigate('/');
-    } catch (error) {
-      console.error('Error adding post:', error);
-      toast.error(t('postAddFailed'));
-    } finally {
-      setSubmitting(false);
-    }
-  };
-
-  if (postsLoading) {
-    return <Loading size="lg" text={t('loadingForm') || 'Loading form...'} />;
+  if (!title || !body) {
+    throw new Error('Title and body are required');
   }
 
+  try {
+    await postService.create({ title, body });
+
+    return redirect('/', {
+      headers: {
+        'Set-Cookie':
+          'flash_message=postCreated; Path=/; Max-Age=10; SameSite=Lax',
+      },
+    });
+  } catch (error) {
+    return redirect('/', {
+      headers: {
+        'Set-Cookie':
+          'flash_message=errorOccurred; Path=/; Max-Age=10; SameSite=Lax',
+      },
+    });
+  }
+}
+
+export default function CreatePostPage() {
+  const navigation = useNavigation();
+  const isLoading =
+    navigation.state === 'loading' || navigation.state === 'submitting';
+
+  if (isLoading) {
+    return (
+      <div className="fixed inset-0 bg-white/70 flex items-center justify-center z-50">
+        <ClipLoader color="#2563eb" size={60} />
+      </div>
+    );
+  }
+
+  return <PostForm />;
+}
+
+export function ErrorBoundary({ error }: { error: Error }) {
+  console.error(error);
+  const { t } = useTranslation('common');
   return (
-    <>
-      {submitting && (
-        <Loading
-          size="md"
-          text={t('creatingPost') || 'Creating post...'}
-          overlay={true}
-        />
-      )}
-      <PostForm handlePost={handleAddPost} />
-    </>
+    <div className="error-container">
+      <h2>{t('error.title')}</h2>
+      <p>{error.message}</p>
+      <a href="/postcards">{t('error.backToPostcards')}</a>
+    </div>
   );
 }

@@ -13,9 +13,10 @@ import './app.css';
 import './i18n';
 import Header from './components/layouts/Header';
 import { useTranslation } from 'react-i18next';
-import { Toaster } from 'react-hot-toast';
 import { ThemeProvider, useTheme } from './contexts/ThemeContext';
-
+import toast, { Toaster } from 'react-hot-toast';
+import { useEffect } from 'react';
+import { getAlertMessages } from './data/alertMessages';
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
   {
@@ -65,6 +66,36 @@ function AppContent() {
 }
 
 export default function App() {
+  const { t } = useTranslation('common');
+  const location = useLocation();
+  useEffect(() => {
+    const checkFlashMessage = () => {
+      console.log('All cookies:', document.cookie);
+
+      const message = document.cookie
+        .split('; ')
+        .find((row) => row.startsWith('flash_message='))
+        ?.split('=')[1];
+
+      console.log('Flash message found:', message);
+
+      if (message) {
+        const alertMessages = getAlertMessages(t);
+        const alertMessage = alertMessages[message] || message;
+        console.log('Showing toast:', alertMessage);
+
+        toast.success(alertMessage);
+
+        // Clear cookie
+        document.cookie = 'flash_message=; Path=/; Max-Age=0; SameSite=Lax';
+        console.log('Cookie cleared');
+      }
+    };
+
+    const timer = setTimeout(checkFlashMessage, 100);
+
+    return () => clearTimeout(timer);
+  }, [location]);
   return (
     <ThemeProvider>
       <AppContent />

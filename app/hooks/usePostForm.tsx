@@ -3,26 +3,20 @@ import type { PostCardProps } from '../data/initialPosts';
 
 interface PostFormData {
   title: string;
-  author: string;
-  excerpt: string;
-  content: string;
+  body: string;
 }
 
 export const usePostForm = (initialPost?: PostCardProps | null) => {
   const [formData, setFormData] = useState<PostFormData>({
     title: initialPost?.title || '',
-    author: initialPost?.author || '',
-    excerpt: initialPost?.excerpt || '',
-    content: initialPost?.content || '',
+    body: initialPost?.body || '',
   });
 
   useEffect(() => {
     if (initialPost) {
       setFormData({
         title: initialPost.title || '',
-        author: initialPost.author || '',
-        excerpt: initialPost.excerpt || '',
-        content: initialPost.content || '',
+        body: initialPost.body || '',
       });
     }
   }, [initialPost]);
@@ -37,9 +31,7 @@ export const usePostForm = (initialPost?: PostCardProps | null) => {
   const resetForm = () => {
     setFormData({
       title: '',
-      author: '',
-      excerpt: '',
-      content: '',
+      body: '',
     });
   };
 
@@ -48,8 +40,6 @@ export const usePostForm = (initialPost?: PostCardProps | null) => {
     updateField,
     resetForm,
     setTitle: (value: string) => updateField('title', value),
-    setAuthor: (value: string) => updateField('author', value),
-    setExcerpt: (value: string) => updateField('excerpt', value),
-    setContent: (value: string) => updateField('content', value),
+    setBody: (value: string) => updateField('body', value),
   };
-}; 
+};
