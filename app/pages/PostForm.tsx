@@ -1,51 +1,15 @@
-import { useCallback } from 'react';
-import type { PostCardProps } from '../data/initialPosts';
-import { useNavigate } from 'react-router';
+import { Form, useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import PostFormInput from '~/components/PostForm/PostFormInput';
-import { usePostForm } from '~/hooks/usePostForm';
+import type { PostCardProps } from '~/data/initialPosts';
 interface PostFormProps {
-  handlePost: (post: PostCardProps) => void;
+  postId?: string | undefined;
   postCard?: PostCardProps | null;
-  postId?: string;
 }
 
-const PostForm: React.FC<PostFormProps> = ({
-  handlePost,
-  postCard,
-  postId,
-}) => {
+const PostForm: React.FC<PostFormProps> = ({ postId, postCard }) => {
   const navigate = useNavigate();
   const { t } = useTranslation('postForm');
-
-  const { formData, setTitle, setAuthor, setExcerpt, setContent, resetForm } =
-    usePostForm(postCard);
-
-  const createPostData = useCallback(
-    (isEdit: boolean): PostCardProps => ({
-      id: isEdit ? postId! : Date.now().toString(),
-      title: formData.title,
-      author: formData.author,
-      excerpt: formData.excerpt,
-      content: formData.content,
-      date: isEdit ? postCard?.date || new Date() : new Date(),
-    }),
-    [postId, formData, postCard]
-  );
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      const isEdit = !!(postId && postCard);
-      const postData = createPostData(isEdit);
-
-      handlePost(postData);
-      resetForm();
-    } catch (error) {
-      console.error('Error processing post:', error);
-      alert(t('error'));
-    }
-  };
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 dark:bg-gray-900">
@@ -59,34 +23,22 @@ const PostForm: React.FC<PostFormProps> = ({
           </p>
         </div>
 
-        <form
-          onSubmit={handleSubmit}
+        <Form
+          method="post"
           className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 space-y-6 dark:bg-gray-800"
         >
           <PostFormInput
             label={t('title')}
-            value={formData.title}
-            onChange={setTitle}
-            required
-          />
-          <PostFormInput
-            label={t('author')}
-            value={formData.author}
-            onChange={setAuthor}
-            required
-          />
-
-          <PostFormInput
-            label={t('excerpt')}
-            value={formData.excerpt}
-            onChange={setExcerpt}
+            defaultValue={postCard?.title || ''}
+            name="title"
             required
           />
 
           <PostFormInput
             label={t('content')}
-            value={formData.content}
-            onChange={setContent}
+            defaultValue={postCard?.body || ''}
+            name="body"
+            rows={6}
             required
           />
 
@@ -105,7 +57,7 @@ const PostForm: React.FC<PostFormProps> = ({
               {postId ? t('editPost') : t('addPost')}
             </button>
           </div>
-        </form>
+        </Form>
       </div>
     </div>
   );
